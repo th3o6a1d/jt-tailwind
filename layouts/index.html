@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ partial "head.html" . }}
+
+
+
+<body>
+    <div class="container mx-auto px-6">
+                {{ range (where site.RegularPages "Type" "in" site.Params.mainSections).GroupByDate "2006" -}}
+                {{ range .Pages }}
+                <div class="p-5 border-2 m-2">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+
+      <!--             </div>
+                    <div><time datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "Jan 02, 2006"}}</time></div>
+                    <div>  -->
+                    {{ range .Params.categories }}
+                        <div class="border-2 float-right mx-1"><a class="p-2" href="/categories/{{ lower . }}/">{{ . }}</a></div>
+                        {{ end }}
+                      </div>
+                {{end}}
+                {{end}}
+          </div>
+    </div>
+</body>
+
+
+
+
+
+<!-- <body>
+    <div class="container mx-auto px-6">
+        <table class="table-auto">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Views</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range (where site.RegularPages "Type" "in" site.Params.mainSections).GroupByDate "2006" -}}
+                {{ range .Pages }}
+                <tr>
+                    <td><a href="{{ .RelPermalink }}">{{ .Title }}</a></td>
+                    <td><time datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "Jan 02, 2006"}}</time></td>
+                    <td> {{ range .Params.categories }}
+                        <a href="/categories/{{ lower . }}/">{{ . }}</a>
+                        {{ end }}</td>
+                </tr>
+                {{end}}
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+</body> -->
+<!-- 
+
+        <div id="posts-list">
+            {{ range (where site.RegularPages "Type" "in" site.Params.mainSections).GroupByDate "2006" -}}
+            <h1 class="site-date-catalog">{{ .Key }}</h1>
+            {{ range .Pages }}
+            <div class="row posts-line">
+                <div class="posts-date col-xs-2">
+                    <time datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "Jan 02"}}</time>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="">
+                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                        </div>
+                        <div class="col-xs-3 col-sm-2 posts-categories">
+                            {{ range .Params.categories }}
+                              <div class="border p-1">
+                                <a href="/categories/{{ lower . }}/">{{ . }}</a>
+                              </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+            {{ end }}
+        </div>
+        {{ partial "footer.html" . }}
+        {{ partial "scripts.html" . }}
+</body>
+ -->
+
+</html>
